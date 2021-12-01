@@ -8,6 +8,7 @@ services:
       - "./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro"
   node-app:
     build: .
+    image: aravindandockerhub/node-app
     env_file:
       - ./.env
     depends_on:
@@ -20,9 +21,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=somepassword
     volumes:
       - mongo-db:/data/db
-  
+
   redis:
     image: redis
 
 volumes:
-  mongo-db:
+  mongo-db: null
